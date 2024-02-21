@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "homes#top"
+  root to: "publichomes#top"
 
   # 顧客用
 # URL /customers/sign_in ...
