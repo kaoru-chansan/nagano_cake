@@ -14,11 +14,21 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
 }
 
-root to: 'public/homes#top'
-resources :customers
+scope module: :public do
+  root to: 'homes#top'
+  get 'homes/about', as: 'about'
+  resources :items, only: [:index, :show]
+  resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+  resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+  resources :orders, only: [:new, :comfirm, :complete, :create, :index, :show]
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+end
 
 namespace :admin do
-  get 'admin', to: 'homes#top'
+  root to: 'homes#top'
+  resources :items, only: [:index, :new, :create, :show, :edit, :update]
+  resources :genres, only: [:index, :create, :edit, :update]
+  resources :customers, only: [:index, :show, :edit, :update]
   resources :admins, only: [:destroy]
 end
 

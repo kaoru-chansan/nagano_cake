@@ -10,32 +10,32 @@
 <body>
   <% if admin_signed_in? %>
     　<li>
-        <%= link_to "About" %>
+        <%= link_to "About", about_path %>
       </li>
       <li>
-        <%= link_to "会員一覧" %>
+        <%= link_to "会員一覧",  admin_customers_path %>
       </li>
       <li>
-        <%= link_to "注文履歴一覧" %>
+        <%= link_to "注文履歴一覧", order_path %>
     　</li>
-  
+
     　<div class="text-right">
-      
+
       　<%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
     　</div>
-    
+
     <% else %>
       <li>
-        <%= link_to "About" %>
+        <%= link_to "About", about_path %>
       </li>
       <li>
-        <%= link_to "商品一覧" %>
+        <%= link_to "商品一覧", admin_items_path %>
       </li>
       <li>
-        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to "新規登録", new_admin_item_path %>
       </li>
       <li>
-        <%= link_to "ログイン", new_user_session_path %>
+        <%= link_to "ログイン", new_admin_session_path %>
       </li>
   <% end %>
   <%= yield %>
