@@ -30,6 +30,7 @@ namespace :admin do
   resources :genres, only: [:index, :create, :edit, :update]
   resources :customers, only: [:index, :show, :edit, :update]
   resources :admins, only: [:destroy]
+  resources :orders, only: [:show]
 end
 
 

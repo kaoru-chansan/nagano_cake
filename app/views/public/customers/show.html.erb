@@ -1,0 +1,47 @@
+
+      <% if customer_signed_in? && @customer == current_customer %>
+      <h2>マイページ</h2>
+      <% end %>
+
+      <strong>登録情報</strong>
+
+      <%= link_to "編集する", edit_customer_path(current_customer) %></br>
+
+
+      <div>
+        氏名
+        <%= @customer.last_name %>
+        <%= @customer.first_name %>
+      </div>
+
+      <div>
+        カナ
+        <%= @customer.last_name_kana %>
+        <%= @customer.first_name_kana %>
+      </div>
+
+      <div>
+        郵便番号
+        <%= @customer.postal_code %>
+      </div>
+
+      <div>
+        住所
+        <%= @customer.address %>
+      </div>
+
+      <div>
+        電話番号
+        <%= @customer.telephone_number %>
+      </div>
+
+      <div>
+        メールアドレス
+        <%= @customer.email %>
+      </div>
+
+      <strong>配送先</strong>
+      <%= link_to "一覧を見る", addresses_path(current_customer) %></br>
+
+      <strong>注文履歴</strong>
+      <%= link_to "一覧を見る", orders_path(current_customer) %></br>

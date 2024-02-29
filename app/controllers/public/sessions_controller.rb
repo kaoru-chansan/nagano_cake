@@ -5,13 +5,13 @@ class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   def after_sign_in_path_for(resource)
-    customers_path
+    customer_path(@customer)
   end
 
   def after_sign_out_path_for(resouce)
     about_path
   end
-  
+
   # GET /resource/sign_in
   # def new
   #   super
@@ -33,7 +33,7 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  
+
   protected
 
   def configure_permitted_parameters
