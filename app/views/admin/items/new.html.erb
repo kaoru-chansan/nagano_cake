@@ -1,1 +1,31 @@
-Admin items new
+<h2>商品新規登録</h2>
+
+  <% if @post_image.errors.any? %>
+    <%= @post_image.errors.count %>件のエラーが発生しました
+    <% @post_image.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+
+  <%= form_with model: @item do |f| %>
+  <div>
+    商品画像
+    <%= f.file_field :image, accept: "image/*", class: "w-100" %>
+  </div>
+
+  <div>
+    商品名
+    <%= f.text_field :name, class: "form-control", placeholder: "商品名" %>
+  </div>
+
+  <div>
+    商品説明
+    <%= f.text_area :introduction, class: "form-control", rows: "3", placeholder: "ここに説明文を記述します" %>
+  </div>
+
+  <div>
+    税抜価格
+    <%= f.text_field :price, class: "form-control", placeholder: "税抜価格" %>
+  </div>
+
+  　<%= f.submit '新規投稿', class: "btn btn-lg btn-block btn-info mt-4" %>
+　<% end %>
