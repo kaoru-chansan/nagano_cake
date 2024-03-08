@@ -1,12 +1,18 @@
 <h2>商品新規登録</h2>
 
-  <% if @post_image.errors.any? %>
-    <%= @post_image.errors.count %>件のエラーが発生しました
-    <% @post_image.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
+<% if @admin_item.errors.any? %>
+  <ul class="alert alert-danger" role="alert">
+    <h6 class="alert-heading">
+      <%= @admin_item.errors.count %>件のエラーが発生しました
+    </h6>
+      <% @admin_item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
-  <%= form_with model: @item do |f| %>
+<%= form_with model: @admin_item do |f| %>
+
   <div>
     商品画像
     <%= f.file_field :image, accept: "image/*", class: "w-100" %>
@@ -27,5 +33,6 @@
     <%= f.text_field :price, class: "form-control", placeholder: "税抜価格" %>
   </div>
 
-  　<%= f.submit '新規投稿', class: "btn btn-lg btn-block btn-info mt-4" %>
-　<% end %>
+  　<%= f.submit '新規登録', class: "btn btn-lg btn-block btn-info mt-4" %>
+
+<% end %>

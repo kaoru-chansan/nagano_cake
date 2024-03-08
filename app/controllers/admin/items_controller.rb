@@ -1,18 +1,18 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
-  layout 'admin'
+　layout 'admin/items'
 
   def index
   end
 
   def new
-    @item = Item.new
+    @admin_item = Item.new
   end
 
   def create
-    @item = Item.new
-    if @item.save
-      redirect_to admin_item_path
+    @admin_item = Item.new
+    if @admin_item.save
+      redirect_to admin_item_path(@item.id)
     else
       render :new
     end
@@ -24,4 +24,10 @@ class Admin::ItemsController < ApplicationController
   def edit
   end
 
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :image, :introduction, :price)
+  end
 end
