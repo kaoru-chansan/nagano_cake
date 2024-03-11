@@ -1,8 +1,9 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
-　layout 'admin/items'
+
 
   def index
+    @admin_item = Item.all
   end
 
   def new
@@ -14,7 +15,9 @@ class Admin::ItemsController < ApplicationController
     if @admin_item.save
       redirect_to admin_item_path(@item.id)
     else
-      render :new
+      flash.now[:notice] = "error"
+      @items = Items.all
+      render :index
     end
   end
 
